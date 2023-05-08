@@ -1,17 +1,21 @@
 'use client';
 
-import qs from "query-string";
-import useSearchModal from "@/app/hooks/useSearchModal";
-import Modal from "./Modal";
-import { useRouter, useSearchParams } from "next/navigation";
+import qs from 'query-string';
+import dynamic from 'next/dynamic'
 import { useCallback, useMemo, useState } from "react";
-import { Range } from "react-date-range";
-import dynamic from "next/dynamic";
-import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
-import { formatISO } from "date-fns";
-import Heading from "../Heading";
+import { Range } from 'react-date-range';
+import { formatISO } from 'date-fns';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import useSearchModal from "@/app/hooks/useSearchModal";
+
+import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
+import CountrySelect, { 
+  CountrySelectValue
+} from "../inputs/CountrySelect";
+import Heading from '../Heading';
 
 enum STEPS {
     LOCATION = 0,
@@ -35,9 +39,9 @@ const SearchModal = () => {
         key: 'selection'
     });
 
-    const Map = useMemo(() => dynamic(() => import('../Map'), {
-        ssr: false,
-    }), [location]);
+    const Map = useMemo(() => dynamic(() => import('../Map'), { 
+        ssr: false 
+    }), []);
 
     const onBack = useCallback(() => {
         setStep((value) => value - 1);
