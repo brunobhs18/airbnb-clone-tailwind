@@ -1,3 +1,5 @@
+export const dynamic = 'auto';
+
 import { Nunito } from "next/font/google";
 
 import './globals.css'
