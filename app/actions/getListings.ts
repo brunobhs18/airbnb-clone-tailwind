@@ -42,17 +42,17 @@ export default async function getListings(
             }
         }
 
-        if (bathroomCount) {
-            query.bathroomCount = {
-                gte: +bathroomCount
-            }
-        }
-
         if (guestCount) {
             query.guestCount = {
                 gte: +guestCount
             }
         }
+
+        if (bathroomCount) {
+            query.bathroomCount = {
+                gte: +bathroomCount
+            }
+        }      
 
         if (locationValue) {
             query.locationValue = locationValue;
@@ -66,8 +66,8 @@ export default async function getListings(
                             {
                                 endDate: { gte: startDate },
                                 startDate: { lte: startDate }
-                            },
-                            {
+                              },
+                              {
                                 startDate: { lte: endDate },
                                 endDate: { gte: endDate }
                             }
@@ -84,9 +84,9 @@ export default async function getListings(
             }
         });
 
-        const safeListings = listings.map((listings) => ({
-            ...listings,
-            createdAt: listings.createdAt.toISOString(),
+        const safeListings = listings.map((listing) => ({
+            ...listing,
+            createdAt: listing.createdAt.toISOString(),
         }));
 
         return safeListings;
