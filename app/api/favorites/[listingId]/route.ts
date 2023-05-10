@@ -19,7 +19,7 @@ export async function POST(
 
     const { listingId } = params;
 
-    if (!listingId || typeof listingId != 'string') {
+    if (!listingId || typeof listingId !== 'string') {
         throw new Error('ID invalido');
     }
 
@@ -51,13 +51,13 @@ export async function DELETE (
 
     const { listingId } = params;
 
-    if (!listingId || typeof listingId != 'string'){
+    if (!listingId || typeof listingId !== 'string'){
         throw new Error('ID invalido');
     }
 
     let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-    favoriteIds = favoriteIds.filter((id) => id != listingId);
+    favoriteIds = favoriteIds.filter((id) => id !== listingId);
 
     const user = await prisma.user.update({
         where: {

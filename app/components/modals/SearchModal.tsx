@@ -52,7 +52,7 @@ const SearchModal = () => {
     }, [])
     
     const onSubmit = useCallback(async () => {
-        if (step != STEPS.INFO) {
+        if (step !== STEPS.INFO) {
             return onNext();
         }
 
